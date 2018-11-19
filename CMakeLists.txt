@@ -1,10 +1,10 @@
 # CMake entry point
 cmake_minimum_required (VERSION 2.6)
-project (rt2d)
+project (rt2d_clicker)
 
 # delete CMakeCache.txt from the build directory when you edit these options
 ####################################################################
-OPTION(MAKE_START "Make RT2D start application" ON)
+OPTION(MAKE_CLICKER "Make RT2D CLICKER application" ON)
 OPTION(MAKE_DEMO "Make RT2D demo (tests) application" ON)
 OPTION(MAKE_CANVAS_DEMO "Make RT2D Canvas demo (tests) application" ON)
 OPTION(MAKE_FLOCKING "Make flocking application" ON)
@@ -18,11 +18,11 @@ OPTION(USE_RS232 "Use RS232 library" OFF)
 OPTION(MAKE_SERIAL "Make serial application" OFF)
 
 OPTION(USE_OPENAL "Use OpenAL library" OFF)
-OPTION(MAKE_AUDIOSTART "Make OpenAL/RT2D audiostart" OFF)
+OPTION(MAKE_AUDIOclicker "Make OpenAL/RT2D audioclicker" OFF)
 OPTION(MAKE_OPENAL_TONEGEN "Make OpenAL Tone Generator" OFF)
 
 OPTION(USE_BOX2D "Use Box2D" OFF)
-OPTION(MAKE_BOX2DSTART "Make Box2D/RT2D box2dstart" OFF)
+OPTION(MAKE_BOX2Dclicker "Make Box2D/RT2D box2dclicker" OFF)
 ####################################################################
 
 if( CMAKE_BINARY_DIR STREQUAL CMAKE_SOURCE_DIR )
@@ -144,22 +144,22 @@ file(
 )
 
 ####################################################################
-# start                                                            #
+# clicker                                                            #
 ####################################################################
-IF(MAKE_START)
-	add_executable(start
-		start/main.cpp
-		start/myentity.cpp
-		start/myentity.h
-		start/myscene.cpp
-		start/myscene.h
+IF(MAKE_CLICKER)
+	add_executable(clicker
+		clicker/main.cpp
+		clicker/myentity.cpp
+		clicker/myentity.h
+		clicker/myscene.cpp
+		clicker/myscene.h
 	)
-	target_link_libraries(start
+	target_link_libraries(clicker
 		${ALL_GRAPHICS_LIBS}
 	)
 	# Copy assets to the build directory
 	file(
-		COPY start/assets
+		COPY clicker/assets
 		DESTINATION ${CMAKE_BINARY_DIR}
 	)
 ENDIF()
@@ -422,29 +422,29 @@ IF(USE_OPENAL)
 ENDIF()
 
 ####################################################################
-# RT2D/OpenAL audiostart                                           #
+# RT2D/OpenAL audioclicker                                           #
 ####################################################################
-IF(MAKE_AUDIOSTART AND USE_OPENAL)
-	add_executable(audiostart
-		projects/audiostart/main.cpp
-		projects/audiostart/myentity.cpp
-		projects/audiostart/myentity.h
-		projects/audiostart/myscene.cpp
-		projects/audiostart/myscene.h
-		projects/audiostart/audio/audio.cpp
-		projects/audiostart/audio/audio.h
-		projects/audiostart/audio/sound.cpp
-		projects/audiostart/audio/sound.h
-		projects/audiostart/audio/wav.cpp
-		projects/audiostart/audio/wav.h
+IF(MAKE_AUDIOclicker AND USE_OPENAL)
+	add_executable(audioclicker
+		projects/audioclicker/main.cpp
+		projects/audioclicker/myentity.cpp
+		projects/audioclicker/myentity.h
+		projects/audioclicker/myscene.cpp
+		projects/audioclicker/myscene.h
+		projects/audioclicker/audio/audio.cpp
+		projects/audioclicker/audio/audio.h
+		projects/audioclicker/audio/sound.cpp
+		projects/audioclicker/audio/sound.h
+		projects/audioclicker/audio/wav.cpp
+		projects/audioclicker/audio/wav.h
 	)
-	target_link_libraries(audiostart
+	target_link_libraries(audioclicker
 		${ALL_GRAPHICS_LIBS}
 		${OPENAL}
 	)
 	# Copy assets to the build directory
 	file(
-		COPY projects/audiostart/assets
+		COPY projects/audioclicker/assets
 		DESTINATION ${CMAKE_BINARY_DIR}
 	)
 ENDIF()
@@ -493,14 +493,14 @@ IF(USE_BOX2D)
 ENDIF()
 
 ####################################################################
-# Box2D/RT2D box2dstart                                            #
+# Box2D/RT2D box2dclicker                                            #
 ####################################################################
-IF(MAKE_BOX2DSTART AND USE_BOX2D)
-	add_executable(box2dstart
-		projects/box2dstart/main.cpp
-		projects/box2dstart/scene01.cpp
+IF(MAKE_BOX2Dclicker AND USE_BOX2D)
+	add_executable(box2dclicker
+		projects/box2dclicker/main.cpp
+		projects/box2dclicker/scene01.cpp
 	)
-	target_link_libraries (box2dstart
+	target_link_libraries (box2dclicker
 		${BOX2D_LIB}
 		${ALL_GRAPHICS_LIBS}
 	)
