@@ -5,14 +5,14 @@ project (rt2d_clicker)
 # delete CMakeCache.txt from the build directory when you edit these options
 ####################################################################
 OPTION(MAKE_CLICKER "Make RT2D CLICKER application" ON)
-OPTION(MAKE_DEMO "Make RT2D demo (tests) application" ON)
-OPTION(MAKE_CANVAS_DEMO "Make RT2D Canvas demo (tests) application" ON)
-OPTION(MAKE_FLOCKING "Make flocking application" ON)
-OPTION(MAKE_BASIC3D "Make basic3D application" ON)
-OPTION(MAKE_NOISE "Make Perlin Noise application" ON)
-OPTION(MAKE_GEOMETRIC "Make GeoMetric application" ON)
-OPTION(MAKE_SHADY "Make custom Shader application" ON)
-OPTION(MAKE_WOLFENSTEIN "Make Wolfenstein3D raycasting application" ON)
+OPTION(MAKE_DEMO "Make RT2D demo (tests) application" OFF)
+OPTION(MAKE_CANVAS_DEMO "Make RT2D Canvas demo (tests) application" OFF)
+OPTION(MAKE_FLOCKING "Make flocking application" OFF)
+OPTION(MAKE_BASIC3D "Make basic3D application" OFF)
+OPTION(MAKE_NOISE "Make Perlin Noise application" OFF)
+OPTION(MAKE_GEOMETRIC "Make GeoMetric application" OFF)
+OPTION(MAKE_SHADY "Make custom Shader application" OFF)
+OPTION(MAKE_WOLFENSTEIN "Make Wolfenstein3D raycasting application" OFF)
 
 OPTION(USE_RS232 "Use RS232 library" OFF)
 OPTION(MAKE_SERIAL "Make serial application" OFF)
@@ -149,10 +149,8 @@ file(
 IF(MAKE_CLICKER)
 	add_executable(clicker
 		clicker/main.cpp
-		clicker/myentity.cpp
-		clicker/myentity.h
-		clicker/myscene.cpp
-		clicker/myscene.h
+    clicker/button.cpp
+    clicker/button.h
 	)
 	target_link_libraries(clicker
 		${ALL_GRAPHICS_LIBS}
