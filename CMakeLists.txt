@@ -151,6 +151,7 @@ IF(MAKE_CLICKER)
 		clicker/main.cpp
     clicker/button.cpp
     clicker/button.h
+    
 	)
 	target_link_libraries(clicker
 		${ALL_GRAPHICS_LIBS}

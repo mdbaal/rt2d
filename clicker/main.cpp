@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 Your Name <you@yourhost.com>
+ * Copyright 2018 Mirco Baalmans <mircobaalmans@live.nl>
  *
  * @brief Description of My Awesome Game.
  *
@@ -14,7 +14,7 @@
  * There's even a second paragraph.
  */
 #include <rt2d/core.h>
-#include "TestScene.h"
+#include "superScene.h"
 
 
 /// @brief main entry point
@@ -22,11 +22,13 @@ int main( void )
 {
 	// Core instance
 	Core core;
+	
 
-	TestScene* s = new TestScene();
+	//index of current running scene
+	int currentRunning = 0;
 
-	while(s->isRunning()) { // check status of Scene every frame
-		core.run(s); // update and render the current scene
+	while(game->isRunning()) { // check status of Scene every frame
+		core.run(game); // update and render the current scene
 	}
 
 	//core.cleanup(); // cleanup ResourceManager (Textures + Meshes, but not Shaders)
