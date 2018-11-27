@@ -35,3 +35,7 @@ bool Button::onClick() {
 	}
 	return false;
 }
+//set tesk
+void Button::setTask(std::function<void()> _task) {
+	this->task = _task;
+}

@@ -16,7 +16,7 @@ public:
 
 	bool onMouseOver();
 	bool onClick();
-
+	void setTask(std::function<void()> _task);
 
 private:
 

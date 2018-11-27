@@ -14,7 +14,7 @@
  * There's even a second paragraph.
  */
 #include <rt2d/core.h>
-#include "superScene.h"
+#include "game.h"
 
 
 /// @brief main entry point
@@ -24,8 +24,7 @@ int main( void )
 	Core core;
 	
 
-	//index of current running scene
-	int currentRunning = 0;
+	Game* game = new Game();
 
 	while(game->isRunning()) { // check status of Scene every frame
 		core.run(game); // update and render the current scene
