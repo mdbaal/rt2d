@@ -2,3 +2,4 @@ build
 *.md.html
 *.DS_*
 .vs
+clicker/scriptbuilder
