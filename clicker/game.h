@@ -13,6 +13,7 @@ public:
 	virtual ~Game();
 	virtual void update(float deltatime);
 	void makeCookiesClick();
+	void makeCookiesSec();
 	void exit();
 private:
 	Counter* counter = nullptr;
@@ -20,6 +21,9 @@ private:
 	ExitButton* exitButton = nullptr;
 
 	int cookiesClick = 1;
+	int coockiesSec = 0;
+
+	float timer = 1;
 };
 
 #endif //GAME_H

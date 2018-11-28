@@ -33,16 +33,20 @@ Game::~Game(){
 
 
 void Game::update(float deltatime) {
-
+	timer -= deltatime;
+	if (timer < 0) {
+		makeCookiesSec();
+		timer = 5;
+	}
 
 }
 
 void Game::makeCookiesClick() {
-	int coockiesToMake = 0;
+	counter->upCookies(cookiesClick);
+}
 
-	coockiesToMake += cookiesClick;
-	
-	counter->upCookies(coockiesToMake);
+void Game::makeCookiesSec() {
+	counter->upCookies(coockiesSec);
 }
 void Game::exit() {
 	this->stop();
