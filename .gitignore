@@ -2,8 +2,4 @@ build
 *.md.html
 *.DS_*
 .vs
-<<<<<<< HEAD
 clicker/scriptbuilder
-=======
-clicker
->>>>>>> master
