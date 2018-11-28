@@ -36,7 +36,7 @@ void Game::update(float deltatime) {
 	timer -= deltatime;
 	if (timer < 0) {
 		makeCookiesSec();
-		timer = 5;
+		timer = 1;
 	}
 
 }

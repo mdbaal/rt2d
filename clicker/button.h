@@ -21,7 +21,8 @@ public:
 private:
 
 	std::function<void()> task;
-
+	void animateClickDown();
+	void animateClickUp();
 };
 
 #endif //BUTTON_H

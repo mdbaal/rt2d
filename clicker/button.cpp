@@ -16,7 +16,10 @@ Button::~Button() {
 void Button::update(float deltatime) {
 	if (onClick()) {
 		task();
+		animateClickDown();
 	}
+	if (input()->getMouseUp(0)) animateClickUp();
+	
 }
 
 //on moouse over event
@@ -38,4 +41,12 @@ bool Button::onClick() {
 //set tesk
 void Button::setTask(std::function<void()> _task) {
 	this->task = _task;
+}
+//enlarge when cliked
+void Button::animateClickDown() {
+	this->scale = Point(.9, .9);
+}
+//shrink when cliked
+void Button::animateClickUp() {
+	this->scale = Point(1, 1);	
 }
