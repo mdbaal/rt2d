@@ -5,6 +5,8 @@
 #include "factory.h"
 #include "exitButton.h"
 #include "counter.h"
+#include "upgradeManager.h"
+
 
 
 class Game : public Scene{
@@ -19,6 +21,7 @@ private:
 	Counter* counter = nullptr;
 	Factory* factory = nullptr;
 	ExitButton* exitButton = nullptr;
+	UpgradeManager* upgradeManager = nullptr;
 
 	int humanClick = 1;
 	int humanSec = 0;

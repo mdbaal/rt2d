@@ -153,8 +153,8 @@ IF(MAKE_CLICKER)
     clicker/button.h
     clicker/babyBoomUpgrade.cpp
     clicker/babyBoomUpgrade.h
-    clicker/conceptieCampagne.cpp
-    clicker/conceptieCampagne.h
+    clicker/conceptieCampagneUpgrade.cpp
+    clicker/conceptieCampagneUpgrade.h
     clicker/counter.cpp
     clicker/counter.h
     clicker/cursorUpgrade.cpp

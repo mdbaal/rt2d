@@ -4,31 +4,36 @@ Game::Game(){
 	counter = new Counter();
 	factory = new Factory();
 	exitButton = new ExitButton();
-	//counter
-	counter->addSprite("assets/square.tga");
-	counter->position = Point(64, 64);
-	counter->sprite()->color = RGBAColor(225, 0, 0, 255);
+	upgradeManager = new UpgradeManager();
+
+	//upgrade manager
+	upgradeManager->position = Point(128, 576);
+
 	//factory
-	factory->addSprite("assets/square.tga");
-	factory->position = Point(SWIDTH / 2, SHEIGHT / 2);
+	factory->addSprite("assets/fabriek.tga");
+	factory->position = Point(512, 256);
 	factory->sprite()->color = RGBAColor(225, 255, 0, 255);
 	factory->setTask(std::bind(&Game::makeHumanClick, this));
+	//counter
+	counter->position = Point(64, 32);
 	//exit button
-	exitButton->addSprite("assets/square.tga");
-	exitButton->position = Point(SWIDTH-64, 64);
+	exitButton->addSprite("assets/button.tga");
+	exitButton->position = Point(SWIDTH-64, SHEIGHT-32);
 	exitButton->sprite()->color = RGBAColor(0, 255, 0, 255);
 	exitButton->setTask(std::bind(&Game::exit, this));
 
-	this->addChild(counter);
+	
 	this->addChild(factory);
+	this->addChild(counter);
 	this->addChild(exitButton);
+	this->addChild(upgradeManager);
 }
 
 Game::~Game(){
 	delete counter;
 	delete factory;
 	delete exitButton;
-
+	delete upgradeManager;
 }
 
 
