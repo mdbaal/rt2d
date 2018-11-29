@@ -12,16 +12,16 @@ public:
 	Game();
 	virtual ~Game();
 	virtual void update(float deltatime);
-	void makeCookiesClick();
-	void makeCookiesSec();
+	void makeHumanClick();
+	void makeHumanSec();
 	void exit();
 private:
 	Counter* counter = nullptr;
 	Factory* factory = nullptr;
 	ExitButton* exitButton = nullptr;
 
-	int cookiesClick = 1;
-	int coockiesSec = 0;
+	int humanClick = 1;
+	int humanSec = 0;
 
 	float timer = 1;
 };

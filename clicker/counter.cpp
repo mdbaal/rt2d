@@ -16,7 +16,7 @@ void Counter::update(float deltatime) {
 	
 }
 
-void Counter::upCookies(int i) {
-	this->cookies += i;
-	this->counterText->message(std::to_string(this->cookies));
+void Counter::upHumans(int i) {
+	this->humans += i;
+	this->counterText->message(std::to_string(this->humans));
 }

@@ -10,9 +10,9 @@ public:
 	Counter();
 	virtual ~Counter();
 	virtual void update(float deltatime);
-	void upCookies(int i);
+	void upHumans(int i);
 private:
-	int cookies = 0;
+	int humans = 0;
 	Text* counterText = nullptr;
 
 

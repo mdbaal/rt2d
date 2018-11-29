@@ -46,7 +46,7 @@ void Button::setTask(std::function<void()> _task) {
 void Button::animateClickDown() {
 	this->scale = Point(.9, .9);
 }
-//shrink when cliked
+//shrink when not clicked
 void Button::animateClickUp() {
 	this->scale = Point(1, 1);	
 }

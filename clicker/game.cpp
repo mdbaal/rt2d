@@ -12,7 +12,7 @@ Game::Game(){
 	factory->addSprite("assets/square.tga");
 	factory->position = Point(SWIDTH / 2, SHEIGHT / 2);
 	factory->sprite()->color = RGBAColor(225, 255, 0, 255);
-	factory->setTask(std::bind(&Game::makeCookiesClick, this));
+	factory->setTask(std::bind(&Game::makeHumanClick, this));
 	//exit button
 	exitButton->addSprite("assets/square.tga");
 	exitButton->position = Point(SWIDTH-64, 64);
@@ -35,18 +35,18 @@ Game::~Game(){
 void Game::update(float deltatime) {
 	timer -= deltatime;
 	if (timer < 0) {
-		makeCookiesSec();
+		makeHumanSec();
 		timer = 1;
 	}
 
 }
 
-void Game::makeCookiesClick() {
-	counter->upCookies(cookiesClick);
+void Game::makeHumanClick() {
+	counter->upHumans(humanClick);
 }
 
-void Game::makeCookiesSec() {
-	counter->upCookies(coockiesSec);
+void Game::makeHumanSec() {
+	counter->upHumans(humanSec);
 }
 void Game::exit() {
 	this->stop();
