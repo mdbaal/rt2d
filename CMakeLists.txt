@@ -151,14 +151,8 @@ IF(MAKE_CLICKER)
 		clicker/main.cpp
     clicker/button.cpp
     clicker/button.h
-    clicker/babyBoomUpgrade.cpp
-    clicker/babyBoomUpgrade.h
-    clicker/conceptieCampagneUpgrade.cpp
-    clicker/conceptieCampagneUpgrade.h
     clicker/counter.cpp
     clicker/counter.h
-    clicker/cursorUpgrade.cpp
-    clicker/cursorUpgrade.h
     clicker/dataManager.cpp
     clicker/dataManager.h
     clicker/exitButton.cpp
@@ -167,12 +161,6 @@ IF(MAKE_CLICKER)
     clicker/factory.h
     clicker/game.cpp
     clicker/game.h
-    clicker/ooievaarPlatformUpgrade.cpp
-    clicker/ooievaarPlatformUpgrade.h
-    clicker/productionlineUpgrade.cpp
-    clicker/productionlineUpgrade.h
-    clicker/spermBoostUpgrade.cpp
-    clicker/spermBoostUpgrade.h
     clicker/upgrade.cpp
     clicker/upgrade.h
     clicker/upgradeManager.cpp
