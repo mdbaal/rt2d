@@ -177,6 +177,10 @@ IF(MAKE_CLICKER)
     clicker/upgrade.h
     clicker/upgradeManager.cpp
     clicker/upgradeManager.h
+    clicker/upgradeBar.cpp
+    clicker/upgradeBar.h
+    clicker/upgradeMini.cpp
+    clicker/upgradeMini.h
 	)
 	target_link_libraries(clicker
 		${ALL_GRAPHICS_LIBS}
