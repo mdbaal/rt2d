@@ -6,26 +6,26 @@
 
 class Upgrade : public Button{
 public:
-	Upgrade();
+	Upgrade(int cost, int gen);
 	virtual ~Upgrade();
 
-	virtual void update(float deltatime);
+	int GetCost() { return this->_cost; }
+	int GetLevel() { return this->_level; }
+	int getGenerating() { return this->_generating; }
 
-	int getCost() { return this->cost; }
-	int getLevel() { return this->level; }
-	int getHumans() { return this->humans; }
+	void setCost(int i) { _cost = i; }
+	void setGenerating(int i) { _generating = i; }
+	
 
 	void levelUp();
 
 private:
-	int cost = 0;
-	int level = 0;
-	int humans = 0;
+	unsigned int _cost = 0;
+	unsigned int _level = 0;
+	unsigned int _generating = 0;
 	
-
 	Text* costText = nullptr;
 	Text* levelText = nullptr;
-	Text* generatingText = nullptr;
 
 	void updateText();
 

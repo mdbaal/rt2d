@@ -5,7 +5,6 @@
 #include <rt2d/text.h>
 #include "factory.h"
 #include "exitButton.h"
-#include "upgradeManager.h"
 #include "upgrade.h"
 #include "upgradeBar.h"
 
@@ -18,17 +17,18 @@ public:
 	virtual void update(float deltatime);
 	void makeHumanClick();
 	void makeHumanSec();
+	int getHumans() { return this->humans;}
 	void setup();
 	void exit();
 private:
 	Text* counter = nullptr;
 	Factory* factory = nullptr;
 	ExitButton* exitButton = nullptr;
-	UpgradeManager* upgradeManager = nullptr;
 
 	std::vector<UpgradeBar*> upgradeBars = std::vector<UpgradeBar*>(6);
 	std::vector<Upgrade*> upgrades = std::vector<Upgrade*>(6);
 
+	int humans = 0;
 	int humanClick = 1;
 	int humanSec = 0;
 

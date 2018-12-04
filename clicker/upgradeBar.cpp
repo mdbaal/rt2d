@@ -11,3 +11,6 @@ UpgradeBar::~UpgradeBar(){
 void UpgradeBar::update(float deltatime) {
 
 }
+void UpgradeBar::addMini() {
+
+}

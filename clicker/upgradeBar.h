@@ -9,6 +9,8 @@ public:
 	UpgradeBar();
 	virtual ~UpgradeBar();
 	virtual void update(float deltatime);
+
+	void addMini();
 private:
 
 };

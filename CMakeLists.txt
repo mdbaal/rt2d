@@ -163,8 +163,6 @@ IF(MAKE_CLICKER)
     clicker/game.h
     clicker/upgrade.cpp
     clicker/upgrade.h
-    clicker/upgradeManager.cpp
-    clicker/upgradeManager.h
     clicker/upgradeBar.cpp
     clicker/upgradeBar.h
     clicker/upgradeMini.cpp

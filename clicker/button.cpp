@@ -22,7 +22,7 @@ void Button::update(float deltatime) {
 	
 }
 
-//on moouse over event
+//on mouse over event
 bool Button::onMouseOver() {
 	if (input()->getMouseY() > (this->position.y - this->sprite()->size.y / 2) && input()->getMouseY() < this->position.y + this->sprite()->size.y / 2) {
 		if (input()->getMouseX() > (this->position.x - this->sprite()->size.x / 2) && input()->getMouseX() < this->position.x + this->sprite()->size.x / 2) {
@@ -38,11 +38,11 @@ bool Button::onClick() {
 	}
 	return false;
 }
-//set tesk
+//set task
 void Button::setTask(std::function<void()> _task) {
 	this->task = _task;
 }
-//enlarge when cliked
+//enlarge when clicked
 void Button::animateClickDown() {
 	this->scale = Point(.9, .9);
 }

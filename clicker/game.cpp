@@ -11,7 +11,6 @@ Game::~Game(){
 	delete factory;
 	this->removeChild(exitButton);
 	delete exitButton;
-	delete upgradeManager;
 	//delete upgrade bars
 	for (int i = 0; i < 6; i++)
 	{
@@ -34,7 +33,6 @@ void Game::setup() {
 	counter = new Text();
 	factory = new Factory();
 	exitButton = new ExitButton();
-	upgradeManager = new UpgradeManager();
 
 	//factory
 	factory->addSprite("assets/fabriek.tga");
@@ -42,7 +40,8 @@ void Game::setup() {
 	factory->sprite()->color = RGBAColor(225, 255, 0, 255);
 	factory->setTask(std::bind(&Game::makeHumanClick, this));
 	//counter
-	counter->position = Point(64, 32);
+	counter->position = Point(32, 32);
+	counter->scale = Point(.5,.5);
 	//exit button
 	exitButton->addSprite("assets/button.tga");
 	exitButton->position = Point(SWIDTH - 64, SHEIGHT - 32);
@@ -64,10 +63,28 @@ void Game::setup() {
 	}
 	//upgrade buttons
 	int x = 192;
+	//cost
+	std::vector<int> c = std::vector<int>();
+	c.push_back(5);
+	c.push_back(100);
+	c.push_back(500);
+	c.push_back(1000);
+	c.push_back(5000);
+	c.push_back(10000);
+	//generating
+	std::vector<int> g = std::vector<int>();
+	g.push_back(1);
+	g.push_back(5);
+	g.push_back(20);
+	g.push_back(50);
+	g.push_back(100);
+	g.push_back(500);
+
 	for (int i = 0; i < 6; i++) {
-		upgrades[i] = new Upgrade();
+		upgrades[i] = new Upgrade(c[i],g[i]);
 		upgrades[i]->position = Point(x, 576);
 		upgrades[i]->addSprite("assets/upgrade_Button.tga");
+		upgrades[i]->setTask(std::bind(&Upgrade::levelUp, upgrades[i]));
 		this->addChild(upgrades[i]);
 		x += 128;
 	}
@@ -84,11 +101,13 @@ void Game::update(float deltatime) {
 }
 
 void Game::makeHumanClick() {
-	
+	humans += humanClick;
+	counter->message("Humans: " + std::to_string(humans));
 }
 
 void Game::makeHumanSec() {
-	
+	humans += humanSec;
+	counter->message("Humans: " + std::to_string(humans));
 }
 void Game::exit() {
 	this->stop();
