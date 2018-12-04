@@ -25,6 +25,8 @@ private:
 	Factory* factory = nullptr;
 	ExitButton* exitButton = nullptr;
 
+	void updateGeneration();
+
 	std::vector<UpgradeBar*> upgradeBars = std::vector<UpgradeBar*>(6);
 	std::vector<Upgrade*> upgrades = std::vector<Upgrade*>(6);
 

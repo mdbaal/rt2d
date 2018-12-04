@@ -44,7 +44,7 @@ void Button::setTask(std::function<void()> _task) {
 }
 //enlarge when clicked
 void Button::animateClickDown() {
-	this->scale = Point(.9, .9);
+	this->scale = Point(1 - 5 /this->sprite()->size.x, 1 - 5 / this->sprite()->size.y);
 }
 //shrink when not clicked
 void Button::animateClickUp() {

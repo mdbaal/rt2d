@@ -96,8 +96,18 @@ void Game::update(float deltatime) {
 	if (timer < 0) {
 		makeHumanSec();
 		timer = 1;
+		updateGeneration();
 	}
 
+}
+void Game::updateGeneration() {
+	//update firt 2 for click
+	if(upgrades[0]->GetLevel()  >0) humanClick += upgrades[0]->getGenerating();
+	if (upgrades[1]->GetLevel() > 0)humanClick += upgrades[1]->getGenerating();
+	//update the rest for sec
+	for (int i = 2; i < 6; i++) {
+		if (upgrades[i]->GetLevel() > 0) humanSec += upgrades[i]->getGenerating();
+	}
 }
 
 void Game::makeHumanClick() {
