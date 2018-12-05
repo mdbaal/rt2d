@@ -28,6 +28,7 @@ int main( void )
 
 	while(game->isRunning()) { // check status of Scene every frame
 		core.run(game); // update and render the current scene
+		//core.showFrameRate(2);
 	}
 
 	//core.cleanup(); // cleanup ResourceManager (Textures + Meshes, but not Shaders)

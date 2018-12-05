@@ -9,7 +9,6 @@
 #include "upgradeBar.h"
 
 
-
 class Game : public Scene{
 public:
 	Game();
@@ -18,6 +17,9 @@ public:
 	void makeHumanClick();
 	void makeHumanSec();
 	int getHumans() { return this->humans;}
+
+	void buyUpgrade(int u);
+
 	void setup();
 	void exit();
 private:
@@ -25,7 +27,7 @@ private:
 	Factory* factory = nullptr;
 	ExitButton* exitButton = nullptr;
 
-	void updateGeneration();
+	void updateGenerating();
 
 	std::vector<UpgradeBar*> upgradeBars = std::vector<UpgradeBar*>(6);
 	std::vector<Upgrade*> upgrades = std::vector<Upgrade*>(6);

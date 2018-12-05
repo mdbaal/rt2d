@@ -3,11 +3,6 @@
 Button::Button() {
 
 }
-//give sprite to button and give task to excecute on click
-Button::Button(std::string sprite, std::function<void()> task) {
-	this->addSprite(sprite);
-	this->task = task;
-}
 
 Button::~Button() {
 
@@ -15,7 +10,8 @@ Button::~Button() {
 
 void Button::update(float deltatime) {
 	if (onClick()) {
-		task();
+		if(task != nullptr) task();
+		if (taskI != nullptr) taskI(id);
 		animateClickDown();
 	}
 	if (input()->getMouseUp(0)) animateClickUp();
@@ -41,6 +37,11 @@ bool Button::onClick() {
 //set task
 void Button::setTask(std::function<void()> _task) {
 	this->task = _task;
+}
+//set taskI
+void Button::setTaskI(std::function<void(int)> _taskI,int id) {
+	this->taskI = _taskI;
+	this->id = id;
 }
 //enlarge when clicked
 void Button::animateClickDown() {

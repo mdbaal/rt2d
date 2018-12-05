@@ -81,13 +81,20 @@ void Game::setup() {
 	g.push_back(500);
 
 	for (int i = 0; i < 6; i++) {
-		upgrades[i] = new Upgrade(c[i],g[i]);
+		upgrades[i] = new Upgrade(c[i], g[i]);
 		upgrades[i]->position = Point(x, 576);
 		upgrades[i]->addSprite("assets/upgrade_Button.tga");
-		upgrades[i]->setTask(std::bind(&Upgrade::levelUp, upgrades[i]));
+		upgrades[i]->setTaskI(std::bind(&Game::buyUpgrade, this,std::placeholders::_1),i);
 		this->addChild(upgrades[i]);
 		x += 128;
 	}
+
+	upgrades[0]->setGenMessage("Per click +1");
+	upgrades[1]->setGenMessage("Per click +5");
+	upgrades[2]->setGenMessage("Per second +20");
+	upgrades[3]->setGenMessage("Per second +50");
+	upgrades[4]->setGenMessage("Per second +100");
+	upgrades[5]->setGenMessage("Per second +500");
 }
 
 
@@ -96,17 +103,30 @@ void Game::update(float deltatime) {
 	if (timer < 0) {
 		makeHumanSec();
 		timer = 1;
-		updateGeneration();
 	}
 
 }
-void Game::updateGeneration() {
+void Game::updateGenerating() {
+	int click = 0;
+	int sec = 0;
 	//update firt 2 for click
-	if(upgrades[0]->GetLevel()  >0) humanClick += upgrades[0]->getGenerating();
-	if (upgrades[1]->GetLevel() > 0)humanClick += upgrades[1]->getGenerating();
+	if(upgrades[0]->GetLevel()  >0) click = upgrades[0]->getGenerating();
+	if (upgrades[1]->GetLevel() > 0)click += upgrades[1]->getGenerating();
 	//update the rest for sec
 	for (int i = 2; i < 6; i++) {
-		if (upgrades[i]->GetLevel() > 0) humanSec += upgrades[i]->getGenerating();
+		if (upgrades[i]->GetLevel() > 0) sec += upgrades[i]->getGenerating();
+	}
+
+	humanClick = click;
+	humanSec = sec;
+}
+
+void Game::buyUpgrade(int u) {
+	if (this->getHumans() - this->upgrades[u]->GetCost() >= 0) {
+		this->humans -= this->upgrades[u]->GetCost();
+		counter->message("Humans: " + std::to_string(humans));
+		this->upgrades[u]->levelUp();
+		this->updateGenerating();
 	}
 }
 
