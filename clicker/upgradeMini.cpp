@@ -8,3 +8,6 @@ UpgradeMini::~UpgradeMini(){
 
 
 }
+void UpgradeMini::update(float deltatime) {
+
+}

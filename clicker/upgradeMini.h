@@ -7,6 +7,8 @@ class UpgradeMini : public Entity{
 public:
 	UpgradeMini();
 	virtual ~UpgradeMini();
+	void update(float deltatime);
+
 private:
 
 };

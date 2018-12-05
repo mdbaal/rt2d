@@ -55,7 +55,7 @@ void Game::setup() {
 	//upgrade bars
 	int y = 32;
 	for (int i = 0; i < 6; i++) {
-		upgradeBars[i] = new UpgradeBar();
+		upgradeBars[i] = new UpgradeBar("assets/mini_Upgrade_Image.tga");
 		upgradeBars[i]->position = Point(1152, y);
 		upgradeBars[i]->addSprite("assets/upgrade_Bar.tga");
 		this->addChild(upgradeBars[i]);
@@ -126,6 +126,7 @@ void Game::buyUpgrade(int u) {
 		this->humans -= this->upgrades[u]->GetCost();
 		counter->message("Humans: " + std::to_string(humans));
 		this->upgrades[u]->levelUp();
+		this->upgradeBars[u]->addMini();
 		this->updateGenerating();
 	}
 }
