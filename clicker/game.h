@@ -32,7 +32,7 @@ private:
 	std::vector<UpgradeBar*> upgradeBars = std::vector<UpgradeBar*>(6);
 	std::vector<Upgrade*> upgrades = std::vector<Upgrade*>(6);
 
-	int humans = 0;
+	unsigned int humans = 0;
 	int humanClick = 1;
 	int humanSec = 0;
 
