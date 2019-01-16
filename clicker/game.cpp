@@ -32,7 +32,11 @@ Game::~Game(){
 void Game::setup() {
 	counter = new Text();
 	factory = new Factory();
-	exitButton = new ExitButton();
+	exitButton = new Button();
+	credits = new Credits();
+	resetButton = new Button();
+
+	dataManager = new DataManager();
 
 	//factory
 	factory->addSprite("assets/fabriek.tga");
@@ -43,14 +47,22 @@ void Game::setup() {
 	counter->position = Point(32, 32);
 	counter->scale = Point(.5,.5);
 	//exit button
-	exitButton->addSprite("assets/button.tga");
-	exitButton->position = Point(SWIDTH - 64, SHEIGHT - 32);
-	exitButton->sprite()->color = RGBAColor(0, 255, 0, 255);
+	exitButton->addSprite("assets/exit_Button.tga");
+	exitButton->position = Point(SWIDTH-64, 672);
 	exitButton->setTask(std::bind(&Game::exit, this));
+	//credits
+	credits->addSprite("assets/credits.tga");
+	credits->position = Point(1152, 512);
+	//reset button
+	resetButton->addSprite("assets/reset_Button.tga");
+	resetButton->position = Point(SWIDTH-192, 672);
+	resetButton->setTask(std::bind(&Game::reset, this));
 
 	this->addChild(factory);
 	this->addChild(counter);
 	this->addChild(exitButton);
+	this->addChild(credits);
+	this->addChild(resetButton);
 
 	//upgrade bars
 	int y = 32;
@@ -95,6 +107,8 @@ void Game::setup() {
 	upgrades[3]->setGenMessage("Per second +50");
 	upgrades[4]->setGenMessage("Per second +100");
 	upgrades[5]->setGenMessage("Per second +500");
+
+	load();
 }
 
 
@@ -110,11 +124,11 @@ void Game::updateGenerating() {
 	int click = 0;
 	int sec = 0;
 	//update firt 2 for click
-	if(upgrades[0]->GetLevel()  >0) click = upgrades[0]->getGenerating();
-	if (upgrades[1]->GetLevel() > 0)click += upgrades[1]->getGenerating();
+	if(upgrades[0]->getLevel()  >0) click = upgrades[0]->getGenerating();
+	if (upgrades[1]->getLevel() > 0)click += upgrades[1]->getGenerating();
 	//update the rest for sec
 	for (int i = 2; i < 6; i++) {
-		if (upgrades[i]->GetLevel() > 0) sec += upgrades[i]->getGenerating();
+		if (upgrades[i]->getLevel() > 0) sec += upgrades[i]->getGenerating();
 	}
 
 	humanClick = click;
@@ -122,8 +136,8 @@ void Game::updateGenerating() {
 }
 
 void Game::buyUpgrade(int u) {
-	if (this->getHumans() - this->upgrades[u]->GetCost() >= 0) {
-		this->humans -= this->upgrades[u]->GetCost();
+	if (this->getHumans() - this->upgrades[u]->getCost() >= 0) {
+		this->humans -= this->upgrades[u]->getCost();
 		counter->message("Humans: " + std::to_string(humans));
 		this->upgrades[u]->levelUp();
 		this->upgradeBars[u]->addMini();
@@ -141,5 +155,40 @@ void Game::makeHumanSec() {
 	counter->message("Humans: " + std::to_string(humans));
 }
 void Game::exit() {
+	save();
 	this->stop();
+}
+
+void Game::save() {
+	std::cout << "saving" << std::endl;
+	std::vector<int> _data = std::vector<int>();
+	for (int i = 0; i < 6; i++) {
+		std::cout << "saving upgrade: " << i +1<< " with level: " << upgrades[i]->getLevel() << std::endl;
+		_data.push_back(upgrades[i]->getLevel());
+	}
+
+	_data.push_back(getHumans());
+	std::cout << "saving humans: " << getHumans();
+	dataManager->writeData(_data);
+}
+void Game::load() {
+	std::cout << "loading" << std::endl;
+	std::vector<int> _data = dataManager->readData();
+	if (_data.size() < 1) { return; }
+	for (int i = 0; i < _data.size()-1; i++) {
+		std::cout << "getting upgrade: " << i +1 << " with level: " << _data[i] << std::endl;
+		upgrades[i]->setLevel(_data[i]);
+		upgrades[i]->updateText();
+	}
+	std::cout << "loading humans: " << _data[_data.size()-1];
+	this->humans = _data[_data.size()-1];
+}
+void Game::reset() {
+	std::cout << "reset" << std::endl;
+	std::vector<int> _data = std::vector<int>();
+	for (int i = 0; i < 7; i++) {
+		_data.push_back(0);
+	}
+	dataManager->writeData(_data);
+	load();
 }

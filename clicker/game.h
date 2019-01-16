@@ -3,8 +3,9 @@
 
 #include <rt2d/scene.h>
 #include <rt2d/text.h>
+#include "dataManager.h"
 #include "factory.h"
-#include "exitButton.h"
+#include "credits.h"
 #include "upgrade.h"
 #include "upgradeBar.h"
 
@@ -22,10 +23,18 @@ public:
 
 	void setup();
 	void exit();
+	void reset();
 private:
 	Text* counter = nullptr;
 	Factory* factory = nullptr;
-	ExitButton* exitButton = nullptr;
+	Button* exitButton = nullptr;
+	Credits* credits = nullptr;
+	Button* resetButton = nullptr;
+	
+	DataManager* dataManager = nullptr;
+
+	void save();
+	void load();
 
 	void updateGenerating();
 

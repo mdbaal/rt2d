@@ -3,6 +3,7 @@
 
 Upgrade::Upgrade(int c, int g) {
 	this->setCost(c);
+	this->_cost = c;
 	this->setGenerating(g);
 	costText = new Text();
 	levelText = new Text();
@@ -32,7 +33,8 @@ Upgrade::~Upgrade() {
 void Upgrade::levelUp() {
 	if (this->_cost < 9999999) {
 		_level++;
-		_cost +=  _cost * .2;
+		_cost = _baseCost * (1.5 * _level);
+		
 		updateText();
 	}
 }

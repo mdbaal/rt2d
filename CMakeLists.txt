@@ -155,12 +155,12 @@ IF(MAKE_CLICKER)
     clicker/counter.h
     clicker/dataManager.cpp
     clicker/dataManager.h
-    clicker/exitButton.cpp
-    clicker/exitButton.h
     clicker/factory.cpp
     clicker/factory.h
     clicker/game.cpp
     clicker/game.h
+    clicker/credits.cpp
+    clicker/credits.h
     clicker/upgrade.cpp
     clicker/upgrade.h
     clicker/upgradeBar.cpp
@@ -176,6 +176,10 @@ IF(MAKE_CLICKER)
 		COPY clicker/assets
 		DESTINATION ${CMAKE_BINARY_DIR}
 	)
+  file(
+    COPY clicker/saveData
+    DESTINATION ${CMAKE_BINARY_DIR}
+  )
 ENDIF()
 
 ####################################################################

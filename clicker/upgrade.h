@@ -9,20 +9,22 @@ public:
 	Upgrade(int cost, int g);
 	virtual ~Upgrade();
 
-	int GetCost() { return this->_cost; }
-	int GetLevel() { return this->_level; }
+	int getCost() { return this->_cost; }
+	int getLevel() { return this->_level; }
+	void setLevel(int l) { this->_level = l; }
 	int getGenerating() { return this->_generating*_level; }
 	
 
-	void setCost(int i) { _cost = i; }
+	void setCost(int i) { _baseCost = i; }
 	void setGenerating(int i) { _generating = i; }
 	
 	void setGenMessage(std::string genMSG);
 
 	void levelUp();
-
+	void updateText();
 private:
 	unsigned int _cost = 0;
+	int _baseCost = 0;
 	unsigned int _level = 0;
 	unsigned int _generating = 0;
 	
@@ -33,7 +35,7 @@ private:
 	Text* genText = nullptr;
 	
 
-	void updateText();
+	
 
 
 };
