@@ -13,6 +13,7 @@ public:
 	virtual void update(float deltatime);
 
 	void addMini();
+	void clear();
 private:
 	std::vector<UpgradeMini*> minis = std::vector<UpgradeMini*>();
 	std::string _sprite = "";

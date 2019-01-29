@@ -32,3 +32,11 @@ void UpgradeBar::addMini() {
 		minis.push_back(m);
 	}
 }
+void UpgradeBar::clear() {
+	for (int i = 0; i < minis.size(); i++) {
+		removeChild(minis[i]);
+		delete minis[i];
+		minis[i] = nullptr;
+	}
+	minis.clear();
+}

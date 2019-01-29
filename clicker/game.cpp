@@ -118,7 +118,6 @@ void Game::update(float deltatime) {
 		makeHumanSec();
 		timer = 1;
 	}
-
 }
 void Game::updateGenerating() {
 	int click = 0;
@@ -185,10 +184,11 @@ void Game::load() {
 }
 void Game::reset() {
 	std::cout << "reset" << std::endl;
-	std::vector<int> _data = std::vector<int>();
-	for (int i = 0; i < 7; i++) {
-		_data.push_back(0);
+	
+	for (int i = 0; i < 6; i++) {
+		upgrades[i]->clear();
+		upgradeBars[i]->clear();
 	}
-	dataManager->writeData(_data);
-	load();
+	this->humans = 0;
+	save();
 }

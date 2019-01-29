@@ -47,3 +47,8 @@ void Upgrade::updateText() {
 void Upgrade::setGenMessage(std::string genMSG) {
 	this->genText->message(genMSG);
 }
+void Upgrade::clear() {
+	_level = 0;
+	_cost = _baseCost * (1.5 * _level);
+	this->updateText();
+}

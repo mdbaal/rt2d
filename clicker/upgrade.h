@@ -22,6 +22,7 @@ public:
 
 	void levelUp();
 	void updateText();
+	void clear();
 private:
 	unsigned int _cost = 0;
 	int _baseCost = 0;
