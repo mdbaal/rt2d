@@ -130,8 +130,8 @@ void Game::updateGenerating() {
 		if (upgrades[i]->getLevel() > 0) sec += upgrades[i]->getGenerating();
 	}
 
-	humanClick = click;
-	humanSec = sec;
+	humanClick += click;
+	humanSec += sec;
 }
 
 void Game::buyUpgrade(int u) {
@@ -177,6 +177,7 @@ void Game::load() {
 	for (int i = 0; i < _data.size()-1; i++) {
 		std::cout << "getting upgrade: " << i +1 << " with level: " << _data[i] << std::endl;
 		upgrades[i]->setLevel(_data[i]);
+		upgrades[i]->calculateCost();
 		upgrades[i]->updateText();
 	}
 	std::cout << "loading humans: " << _data[_data.size()-1];
@@ -190,5 +191,6 @@ void Game::reset() {
 		upgradeBars[i]->clear();
 	}
 	this->humans = 0;
+	updateGenerating();
 	save();
 }

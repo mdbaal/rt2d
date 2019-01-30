@@ -11,7 +11,7 @@ public:
 
 	int getCost() { return this->_cost; }
 	int getLevel() { return this->_level; }
-	void setLevel(int l) { this->_level = l; }
+	void setLevel(int l) { this->_level = l; _cost = _baseCost * (1.5 * _level);}
 	int getGenerating() { return this->_generating*_level; }
 	
 
@@ -21,6 +21,7 @@ public:
 	void setGenMessage(std::string genMSG);
 
 	void levelUp();
+	void calculateCost();
 	void updateText();
 	void clear();
 private:
@@ -30,9 +31,10 @@ private:
 	unsigned int _generating = 0;
 	
 	
-
 	Text* costText = nullptr;
+	Text* costNumber = nullptr;
 	Text* levelText = nullptr;
+	Text* levelNumber = nullptr;
 	Text* genText = nullptr;
 	
 
